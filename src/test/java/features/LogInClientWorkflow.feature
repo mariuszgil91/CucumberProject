@@ -4,7 +4,7 @@ Feature:
   So that i can add accounting data for that client
 
 
-  Scenario: Sign up a new user
+  Scenario: Log into system
     Given the user is on landing page
     When she provides the email as automationTest@test1234.com
     And she provides the password as automationTest12345

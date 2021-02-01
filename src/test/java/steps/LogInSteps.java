@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ClientSteps {
+public class LogInSteps {
 
     WebDriver driver;
 
@@ -40,5 +40,6 @@ public class ClientSteps {
     public void she_should_be_logged_in_to_the_application() throws Throwable {
         String actualTitle = driver.getTitle();
         Assert.assertEquals("My account - My Store", actualTitle);
+        driver.quit();
     }
 }
