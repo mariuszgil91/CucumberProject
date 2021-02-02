@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddItemToCart {
 
@@ -19,7 +21,7 @@ public class AddItemToCart {
         System.setProperty("webdriver.chrome.driver","chromedriver-5");
         driver = new ChromeDriver();
         driver.get("http://automationpractice.com/index.php?id_product=1&controller=product");
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
     }
 
     @When("^I add item to cart$")
@@ -39,7 +41,7 @@ public class AddItemToCart {
 
     @And("^Item price should match$")
     public void itemPriceShouldMatch() {
-        String itemValue = driver.findElement(By.cssSelector("span.ajax_block_products_total")).getText();
+        String itemValue = new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.ajax_block_products_total"))).getAttribute("innerHTML");
         Assert.assertEquals(itemValueBeforeCart, itemValue);
         driver.quit();
     }
